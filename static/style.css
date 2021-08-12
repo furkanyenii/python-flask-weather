@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    height: 750px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-around;
+    border: 2px solid black;
+    
+}
+
+.topContainer{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-around;
+    
+}
+
+.bottomContainer{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-around;
+    
+}
+
+.leftBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.leftBottomBox{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.rightBox p{
+    font-size: 48px;
+    font-weight: 500;
+    color: black;
+}

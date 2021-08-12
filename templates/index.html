@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+AnaSayfa
+{% endblock %}
+
+
+
+
+  {% block body %}
+
+<div class="container">
+  
+  <div class="topContainer">
+
+    <div class="leftBox">
+     
+      <p style="font-size: 64px;">{{'{0:0.0f}'.format(veri.consolidated_weather[1].the_temp)}} °C </p>
+      
+      <div class="leftBottomBox">
+      Max: {{'{0:0.0f}'.format(veri.consolidated_weather[1].max_temp)}} °C &nbsp;&nbsp;&#124;&nbsp;&nbsp;
+      Min: {{'{0:0.0f}'.format(veri.consolidated_weather[1].min_temp)}} °C
+      </div>
+
+
+    </div>
+
+    <div class="rightBox" style="padding-bottom: 50px;">
+      <p>{{veri.title}}</p>
+    </div>
+
+  </div>
+
+  <div class="bottomContainer">
+    <div class="box">
+      <p>5-day weather forecast</p>
+    </div>
+
+    
+  </div>
+
+
+</div>
+{% endblock %}
+
+<!--<p>{{veri.consolidated_weather[1].humidity}}</p>
+  <p>{{veri.consolidated_weather[1].the_temp}}</p>
+ -->
+  
