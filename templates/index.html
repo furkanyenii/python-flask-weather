@@ -39,37 +39,18 @@ AnaSayfa
   </div>
 
   <div class="bottomContainer">
+    
+    {% for i in range(0, veri.consolidated_weather|count) %}
+    
     <div>
-        <p>{{veri.consolidated_weather[1].applicable_date}}</p>
-        <p><img src="https://www.metaweather.com//static/img/weather/png/{{veri.consolidated_weather[1].weather_state_abbr}}.png" alt=""></p>
-        <p>{{'{0:0.0f}'.format(veri.consolidated_weather[1].the_temp)}} ° </p>
-      </div>
-
-      <div>
-        <p>{{veri.consolidated_weather[2].applicable_date}}</p>
-        <p><img src="https://www.metaweather.com//static/img/weather/png/{{veri.consolidated_weather[2].weather_state_abbr}}.png" alt=""></p>
-        <p>{{'{0:0.0f}'.format(veri.consolidated_weather[2].the_temp)}} ° </p>
-      </div>
-
-      <div>
-        <p>{{veri.consolidated_weather[3].applicable_date}}</p>
-        <p><img src="https://www.metaweather.com//static/img/weather/png/{{veri.consolidated_weather[3].weather_state_abbr}}.png" alt=""></p>
-        <p>{{'{0:0.0f}'.format(veri.consolidated_weather[3].the_temp)}} ° </p>
-      </div>
-
-      <div>
-        <p>{{veri.consolidated_weather[4].applicable_date}}</p>
-        <p><img src="https://www.metaweather.com//static/img/weather/png/{{veri.consolidated_weather[4].weather_state_abbr}}.png" alt=""></p>
-        <p>{{'{0:0.0f}'.format(veri.consolidated_weather[4].the_temp)}} ° </p>
-      </div>
-
-      <div>
-        <p>{{veri.consolidated_weather[5].applicable_date}}</p>
-        <p><img src="https://www.metaweather.com//static/img/weather/png/{{veri.consolidated_weather[5].weather_state_abbr}}.png" alt=""></p>
-        <p>{{'{0:0.0f}'.format(veri.consolidated_weather[5].the_temp)}} ° </p>
-      </div>
-      
+      <p>{{veri.consolidated_weather[i].applicable_date}}</p>
+      <p><img src="https://www.metaweather.com//static/img/weather/png/{{veri.consolidated_weather[i].weather_state_abbr}}.png" alt=""></p>
+      <p>{{'{0:0.0f}'.format(veri.consolidated_weather[i].the_temp)}} ° </p>
     </div>
+  
+    {% endfor %}
+
+  </div>
 
     
   </div>
