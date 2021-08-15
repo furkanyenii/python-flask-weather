@@ -1,30 +1,32 @@
-from flask import Flask, json,render_template,request,jsonify
+from flask import Flask, json,render_template,request
 import requests
-app = Flask(__name__)
+import http.client
 
+app = Flask(__name__)
 app.static_folder = 'static'
 
 @app.route("/")
 def index():
-    #Kullanıcının konumunu bulan kod
-    url = 'http://ip-api.com/json/'.format(request.remote_addr)
-    r = requests.get(url)
-    j = json.loads(r.text)
-    city = j['city']
+
+    ipp = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+    url = 'http://ip-api.com/json/'.format(ipp)
+    req = requests.get(url)
+    response = json.loads(req.text)
+    city = response['city']
     city2 = str(city)
 
-    url2 = 'https://www.metaweather.com/api/location/search/?query='+city2
-    req = requests.get(url2)
-    gelen = json.loads(req.text)
-    woeid = gelen[0]['woeid'] 
-    woeid2 = str(woeid)
+    conn = http.client.HTTPSConnection("api.collectapi.com")
+    headers = {
+    'content-type': "application/json",
+    'authorization': "apikey 7qMYttsLt8n29p0NlalYd9:7vdi76VfE3Cr6SZevJHkhA"
+    }
 
-    url3 = 'https://www.metaweather.com/api/location/'+woeid2
-    req2 = requests.get(url3)
-    gelen2 = json.loads(req2.text)
+    conn.request("GET", "/weather/getWeather?data.lang=tr&data.city="+city2, headers=headers)
+    res = conn.getresponse()
+    data = json.loads(res.read())
+    return render_template("index.html",res=data,city = city2)
 
 
-    return render_template("index.html",city = city,woeid = woeid,veri=gelen2)
 
 @app.route("/hakkimda")
 def hakkimda():

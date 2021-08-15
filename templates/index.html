@@ -5,8 +5,6 @@ AnaSayfa
 {% endblock %}
 
 
-
-
   {% block body %}
 
 <div class="container content">
@@ -15,37 +13,37 @@ AnaSayfa
 
     <div class="leftBox">
      
-      <p style="font-size: 72px;">{{'{0:0.0f}'.format(veri.consolidated_weather[0].the_temp)}} ° </p>
+      <p style="font-size: 72px;">{{res.result[0].degree|int}} ° </p>
       
       <div class="leftBottomBox">
-      <p style="font-size: 20px;">Max: {{'{0:0.0f}'.format(veri.consolidated_weather[0].max_temp)}} °C</p> &nbsp;&nbsp;&nbsp;&nbsp;
-      <p style="font-size: 20px;">Min: {{'{0:0.0f}'.format(veri.consolidated_weather[0].min_temp)}} °C</p>
+      <p style="font-size: 20px;">Max: {{res.result[0].max|int}} °C</p> &nbsp;&nbsp;&nbsp;&nbsp;
+      <p style="font-size: 20px;">Min: {{res.result[0].min|int}} °C</p>
       </div>
     </div>
 
     <div class="rightBox" >
-      <p>{{veri.title}}</p> 
+      <p>{{city}}</p> <br>
+      <p style="font-size: 20px;">Tarih : {{res.result[0].date}}</p>
     </div>
 
   </div>
 
 
   <div class="icons">
-    <p><img src="https://img.icons8.com/windows/32/ffffff/show-space-warps.png"/> <br> Görüş Mesafesi: {{'{0:0.0f}'.format(veri.consolidated_weather[0].visibility)}} km</p>
-    <p><img src="https://img.icons8.com/ios-glyphs/30/ffffff/wind--v1.png"/> <br> Rüzgar Hızı: {{'{0:0.0f}'.format(veri.consolidated_weather[0].wind_speed)}} km/sa</p>
-    <p><img src="https://img.icons8.com/fluency-systems-regular/32/ffffff/atmospheric-pressure.png"/> <br> Basınç : {{'{0:0.0f}'.format(veri.consolidated_weather[0].air_pressure)}} hPa</p>
-    <p><img src="https://img.icons8.com/material-outlined/32/ffffff/humidity.png"/> <br> Nem : % {{'{0:0.0f}'.format(veri.consolidated_weather[0].humidity)}}</p>
+    <p><img src="https://img.icons8.com/windows/32/ffffff/show-space-warps.png"/> <br> Hava Durumu: {{res.result[0].description}}</p>
+    <p><img src="https://img.icons8.com/ios-glyphs/30/ffffff/wind--v1.png"/> <br> Gece Sıcaklığı: {{res.result[0].night | int }} °C</p>
+    <p><img src="https://img.icons8.com/material-outlined/32/ffffff/humidity.png"/> <br> Nem : % {{res.result[0].humidity | int}}</p>
 
   </div>
 
   <div class="bottomContainer">
     
-    {% for i in range(0, veri.consolidated_weather|count) %}
+    {% for i in range(1, res.result|count-1) %}
     
     <div>
-      <p>{{veri.consolidated_weather[i].applicable_date}}</p>
-      <p><img src="https://www.metaweather.com//static/img/weather/png/{{veri.consolidated_weather[i].weather_state_abbr}}.png" alt=""></p>
-      <p>{{'{0:0.0f}'.format(veri.consolidated_weather[i].the_temp)}} ° </p>
+      <p>{{res.result[i].day}}</p>
+      <p><img src="{{res.result[i].icon}}" alt=""></p>
+      <p>{{res.result[i].degree|int}} ° </p>
     </div>
   
     {% endfor %}
