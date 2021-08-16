@@ -10,8 +10,7 @@ Gets a user's external IP address and then used http://ip-api.com to get more sp
 - index.html displays weather information and displays the appropriate weather icon based on the current weather.
 
 
-#### This App Provides us 
-                
+#### This App Provides us          
 + The Temperature
     * Max Temperature
     * Min Temperature
