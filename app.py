@@ -18,7 +18,7 @@ def index():
     conn = http.client.HTTPSConnection("api.collectapi.com")
     headers = {
     'content-type': "application/json",
-    'authorization': "apikey 7qMYttsLt8n29p0NlalYd9:7vdi76VfE3Cr6SZevJHkhA"
+    'authorization': "apikey -------- YOUR API KEY -------"
     }
 
     conn.request("GET", "/weather/getWeather?data.lang=tr&data.city="+city2, headers=headers)
